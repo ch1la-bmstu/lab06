@@ -1,21 +1,19 @@
+add_compile_options(-Wno-error=maybe-uninitialized)
 cmake_minimum_required(VERSION 3.10)
 
-project(lab03 VERSION 1.0.0)
+project(lab05 VERSION 1.0.0)
 
-# Добавляем поддиректории с библиотеками
-add_subdirectory(formatter_lib)
-add_subdirectory(formatter_ex_lib)
-add_subdirectory(solver_lib)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Приложение hello_world (использует formatter_ex)
-add_executable(hello_world hello_world.cpp)
-target_link_libraries(hello_world
-    formatter_ex
-)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
 
-# Приложение solver (использует formatter_ex и solver_lib)
-add_executable(solver solver.cpp)
-target_link_libraries(solver
-    formatter_ex
-    solver_lib
-)
+add_subdirectory(banking)
+
+option(BUILD_TESTS "Build tests" ON)
+
+if(BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(third-party/gtest)
+    add_subdirectory(tests)
+endif()

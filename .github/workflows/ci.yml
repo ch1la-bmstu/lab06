@@ -1,41 +1,27 @@
-name: Lab04 CI
+name: CI
 
-on:
-  push:
-  pull_request:
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+on: [push, pull_request]
 
 jobs:
   build:
-    strategy:
-      matrix:
-        include:
-          - os: ubuntu-latest
-            compiler: g++
-          - os: ubuntu-latest
-            compiler: clang++
-          - os: windows-latest
-            compiler: cl
-
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Configure (Linux)
-        if: runner.os != 'Windows'
-        run: cmake -S . -B build -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
+      - run: git submodule update --init --recursive
 
-      - name: Build (Linux)
-        if: runner.os != 'Windows'
-        run: cmake --build build
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y lcov
 
-      - name: Configure (Windows)
-        if: runner.os == 'Windows'
-        run: cmake -S . -B build
+      - run: cmake -H. -B_build -DBUILD_TESTS=ON
+      - run: cmake --build _build
+      - run: ctest --test-dir _build --output-on-failure
 
-      - name: Build (Windows)
-        if: runner.os == 'Windows'
-        run: cmake --build build --config Release
+      - run: |
+          lcov --capture --directory . --output-file coverage.info
+          lcov --remove coverage.info '/usr/*' 'third-party/*' --output-file coverage.info
+
+      - uses: coverallsapp/github-action@v2
+        with:
+          file: coverage.info

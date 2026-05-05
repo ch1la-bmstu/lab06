@@ -1,0 +1,78 @@
+Start testing: May 05 15:45 MSK
+----------------------------------------------------------
+1/1 Testing: check
+1/1 Test: check
+Command: "/home/ch1la/ch1la-bmstu/workspace/projects/lab05/_build/tests/check"
+Directory: /home/ch1la/ch1la-bmstu/workspace/projects/lab05/_build/tests
+"check" start time: May 05 15:45 MSK
+Output:
+----------------------------------------------------------
+Running main() from /home/ch1la/ch1la-bmstu/workspace/projects/lab05/third-party/gtest/googletest/src/gtest_main.cc
+[==========] Running 24 tests from 2 test cases.
+[----------] Global test environment set-up.
+[----------] 8 tests from Account
+[ RUN      ] Account.Constructor
+[       OK ] Account.Constructor (0 ms)
+[ RUN      ] Account.ChangeBalanceThrowsIfNotLocked
+[       OK ] Account.ChangeBalanceThrowsIfNotLocked (1 ms)
+[ RUN      ] Account.ChangeBalanceWorksIfLocked
+[       OK ] Account.ChangeBalanceWorksIfLocked (0 ms)
+[ RUN      ] Account.DoubleLockThrows
+[       OK ] Account.DoubleLockThrows (0 ms)
+[ RUN      ] Account.UnlockWorks
+[       OK ] Account.UnlockWorks (0 ms)
+[ RUN      ] Account.ChangeBalanceThrowsDirectly
+[       OK ] Account.ChangeBalanceThrowsDirectly (0 ms)
+[ RUN      ] Account.DoubleLockThrowsCoverage
+[       OK ] Account.DoubleLockThrowsCoverage (0 ms)
+[ RUN      ] Account.ChangeBalanceUnlockedExceptionPath
+[       OK ] Account.ChangeBalanceUnlockedExceptionPath (0 ms)
+[----------] 8 tests from Account (1 ms total)
+
+[----------] 16 tests from Transaction
+[ RUN      ] Transaction.DefaultFee
+[       OK ] Transaction.DefaultFee (0 ms)
+[ RUN      ] Transaction.SetFee
+[       OK ] Transaction.SetFee (0 ms)
+[ RUN      ] Transaction.SameAccountThrows
+[       OK ] Transaction.SameAccountThrows (0 ms)
+[ RUN      ] Transaction.NegativeSumThrows
+[       OK ] Transaction.NegativeSumThrows (0 ms)
+[ RUN      ] Transaction.TooSmallSumThrows
+[       OK ] Transaction.TooSmallSumThrows (0 ms)
+[ RUN      ] Transaction.FeeTooBigReturnsFalse
+[       OK ] Transaction.FeeTooBigReturnsFalse (0 ms)
+[ RUN      ] Transaction.SuccessTransfer
+[       OK ] Transaction.SuccessTransfer (0 ms)
+[ RUN      ] Transaction.DebitFailBranch
+[       OK ] Transaction.DebitFailBranch (0 ms)
+[ RUN      ] Transaction.DebitFalseRollback
+[       OK ] Transaction.DebitFalseRollback (0 ms)
+[ RUN      ] Transaction.FullRollbackAndUnlockCoverage
+[       OK ] Transaction.FullRollbackAndUnlockCoverage (0 ms)
+[ RUN      ] Transaction.FullRollbackCase
+[       OK ] Transaction.FullRollbackCase (0 ms)
+[ RUN      ] Transaction.FinalCoverageCase
+[       OK ] Transaction.FinalCoverageCase (0 ms)
+[ RUN      ] Transaction.FinalEdgeCaseCoverage
+[       OK ] Transaction.FinalEdgeCaseCoverage (0 ms)
+[ RUN      ] Transaction.FeeEdgeExactBoundary
+[       OK ] Transaction.FeeEdgeExactBoundary (0 ms)
+[ RUN      ] Transaction.FeeBoundaryZeroRollbackPath
+[       OK ] Transaction.FeeBoundaryZeroRollbackPath (0 ms)
+[ RUN      ] Transaction.FinalGuaranteedCoverage
+[       OK ] Transaction.FinalGuaranteedCoverage (0 ms)
+[----------] 16 tests from Transaction (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 24 tests from 2 test cases ran. (1 ms total)
+[  PASSED  ] 24 tests.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"check" end time: May 05 15:45 MSK
+"check" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 05 15:45 MSK
