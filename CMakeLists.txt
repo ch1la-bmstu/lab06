@@ -17,3 +17,5 @@ if(BUILD_TESTS)
     add_subdirectory(third-party/gtest)
     add_subdirectory(tests)
 endif()
+
+include(CPackConfig.cmake)
